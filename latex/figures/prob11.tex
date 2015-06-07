@@ -1,0 +1,13 @@
+\tikzset{
+	pics/block/.style n args = {2}{
+		code = {
+			\node[draw] at (0,0) {#1};
+		}
+	}
+}
+
+\begin{tikzpicture}[scale=1]
+	\draw[->]
+	(0,0) node[draw,align=center] {Desired Grind\\Depth}
+	(1.2,0) -- (3,0);
+\end{tikzpicture}
