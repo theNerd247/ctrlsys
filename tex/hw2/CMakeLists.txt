@@ -1,21 +1,30 @@
 cmake_minimum_required(VERSION 2.6)
+cmake_policy(SET CMP0011 NEW) #acknowledge policy push/pop
 
-include(UseLaTeX)
+include(LaTeXBuild)
+
+set(projectName "hw2")
+
+set(mainTexFile "main.tex")
 
 set(texDir "tex")
 set(styDir "sty")
+set(imgDir "img")
+set(otherIncludes "")
 
-set(mainTexFile "main.tex")
-set(subTexFiles "hw.tex")
+set(subProjects "")
 
-#build the list of subtex files
-set(inputTexFiles "")
-foreach(subFile ${subTexFiles})
-	set(inputTexFiles ${inputTexFile} "${texDir}/${subFile}")
-endforeach(subFile)
+set(texinputs 
+	"${texDir}"
+	"${styDir}"
+	"${imgDir}"
+	"${otherIncludes}")
 
-ADD_LATEX_DOCUMENT (
-	${mainTexFile}
-	INPUTS ${inputTexFile}
-	DEFAULT_PDF
-)
+SetupLaTexBuildEnv (
+	"${projectName}" # the name of the project (this also sets the name of the pdf file)
+	"${mainTexFile}" # the main tex file
+	"${texinputs}" # all the standalone TEXINPUTS for this project
+	"${subProjects}"
+	)
+
+BuildLaTeX(${projectName})
