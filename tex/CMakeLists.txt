@@ -11,14 +11,13 @@ project("Homework")
 set(PDF_COMPILER_OPTS "")
 
 # list of projects to build
-set(projects "hw2")
+set(projects 
+	"hw1"
+	"hw2")
 
 set(OLDTEXINPUTS $ENV{TEXINPUTS})
 
 #build the project infos
-foreach(proj "${projects}")
+foreach(proj ${projects})
 	add_subdirectory(${proj})
 endforeach(proj)
-
-foreach(projectName "${projects}")
-endforeach(projectName)
