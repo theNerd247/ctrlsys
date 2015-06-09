@@ -29,6 +29,7 @@ Building
 Use the following steps to build the project called <project_name>.
 
 ::
+
   mkdir build
   cd build
   cmake ..
