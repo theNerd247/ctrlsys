@@ -112,11 +112,20 @@ This is the homework from problem set 1. This document was generated using
   \item
     \begin{minipage}{\textwidth}
       \vspace{0pt}
-      %\includegraphics[width=\textwidth]{prob25}
+      \includegraphics[width=\textwidth]{prob25}
     \end{minipage}
     \begin{align*}
         (K_1+C_1s)X_1(s)&-&C_1sX_2(s) &= F(s)
       \\C_1sX_1(s)&-&(M_1s^2-C_1s-C_2s)X_2(s) &= 0
+    \end{align*}
+    \begin{align*}
+      \therefore \frac{X_1(s)}{F(s)} &=
+	      \frac{-M_1s^2-C_1s-C_2s}{\Delta} 
+        \\ | \Delta &= 
+        \begin{vmatrix}
+            (K_1+C_1s) & -C_1s
+          \\C_1s & -M_1s^2-C_1s-C_2s
+        \end{vmatrix}
     \end{align*}
 \end{enumerate}
 
