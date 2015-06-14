@@ -1,36 +1,113 @@
 % lab1 for control systems
 pkg load control
 
-%graphics_toolkit('gnuplot');
+genGraphs = 0;
+genStepGraphs = 0;
+gen3Graphs = 0;
+gen1Graphs = 0;
+
+function strct = newGS(num,denom)
+	strct = struct(
+		 "func",tf(num,denom)
+		,"poles",[]
+		,"zeros",[]
+	);
+	endfunction
+
+function display(strct)
+	display(strct.func);
+	disp("Poles: ");
+	disp(strct.poles);
+	disp("Zeros: ");
+	disp(strct.zeros);
+	endfunction
 
 % transfer functions
-g1 = tf([3,8],[1,6,5]);
-g2 = tf([3,8],[1,9]);
-g3 = tf([3,8],[1,2,8]);
-g4 = tf([3,8],[1,-6,8]);
+GS = {
+	 newGS([3,8],[1,6,5])
+	,newGS([3,8],[1,0,9])
+	,newGS([3,8],[1,2,8])
+	,newGS([3,8],[1,-6,8])
+};
 
-% compute poles and zeros of transfer functions
-[p1,z1] = pzmap(g1);
-[p2,z2] = pzmap(g2);
-[p3,z3] = pzmap(g3);
-[p4,z4] = pzmap(g4);
+for i = 1:4
+	GS{i}.func = set(GS{i}.func,"outputname",sprintf("G%i",i));
+	endfor
 
-% get the step responses
-s1 = step(g1);
-s2 = step(g2);
-s3 = step(g3);
-s4 = step(g4);
+% compute poles and zeros and step response of transfer functions
+for i = 1:4
+	[p,z] = pzmap(GS{i}.func);
+	GS{i}.zeros = z;
+	GS{i}.poles = p;
+	endfor
 
-% graph the poles and zeros
-pdfopts='-dpdf -color';
-pzmap(g1);
-print -dpng -color '../graph/g1.png';
-pzmap(g2);
-print -dpng -color '../graph/g2.png';
-pzmap(g3);
-print -dpng -color '../graph/g3.png';
-pzmap(g4);
-print -dpng -color '../graph/g4.png';
-close
+colo = {
+	 "r"
+	,"g"
+	,"b"
+	,"k"
+};
+
+% graph the poles, zeros, and step functions
+if(genGraphs)
+	hold on;
+	for i = 1:4
+		pzmap(GS{i}.func);
+		f = sprintf("../graph/g%i.png",i);
+		print -dpng -color f
+		close
+		endfor
+	endif 
+	
+if(genStepGraphs)
+	hold on;
+	for i = 1:4
+		[y, t] = step(GS{i}.func,5);
+		plot(t,y,colo{i});
+		axis([0,5,-0.5,2.5]);
+		endfor
+
+		title("Step Responses");
+		legend("G1","G2","G3","G4");
+		print -dpng -color "../graph/step.png";
+		close
+	endif
+
+% simulate g3
+if(gen3Graphs)
+	t = 0:(pi/100):(2*pi);
+	g3_lsim = lsim(GS{3},sin(2*t+0.8),t);
+	
+	hold on;
+	plot(t,g3_lsim,"b");
+	plot(t,sin(2*t+0.8),"g");
+	
+	title("G3 Simulation");
+	legend("lsim(g3)","sin(2t+0.8)");
+	xlabel("t");
+	
+	print -dpng -color '../graph/g3sim.png';
+	close
+	endif;
+
+% simulate g1
+if(gen1Graphs)
+	[s t] = gensig("square",10,100);
+	g1_lsim = lsim(GS{1},s,t);
+	
+	hold on;
+	plot(t,g1_lsim,"b");
+	plot(t,s,"g");
+	
+	title("G1 Simulation");
+	xlabel("t");
+	legend("lsim(g1)","input signal");
+	
+	print -dpng -color '../graph/g1sim.png';
+	close
+	endif;
 
 % output the data
+diary on
+GS
+diary off
