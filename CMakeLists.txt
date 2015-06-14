@@ -8,12 +8,13 @@ include(FindLATEX)
 
 project("Homework")
 
-set(PDF_COMPILER_OPTS "")
+set(PDF_COMPILER_OPTS 
+	"-file-line-error")
 
 # list of projects to build
 set(projects 
-	"hw1"
-	"hw2")
+	"lab1"
+	)
 
 set(OLDTEXINPUTS $ENV{TEXINPUTS})
 

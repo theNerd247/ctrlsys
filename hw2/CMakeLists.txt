@@ -3,7 +3,7 @@ cmake_policy(SET CMP0011 NEW) #acknowledge policy push/pop
 
 include(LaTeXBuild)
 
-set(projectName "<+proj1+>")
+project("hw2")
 
 set(mainTexFile "main.tex")
 
@@ -26,5 +26,3 @@ SetupLaTexBuildEnv (
 	"${texinputs}" # all the standalone TEXINPUTS for this project
 	"${subProjects}"
 	)
-
-BuildLaTeX(${projectName})

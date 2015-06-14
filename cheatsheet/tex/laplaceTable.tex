@@ -1,0 +1,54 @@
+\documentclass[main.tex]{subfiles}
+
+\everymath{\displaystyle}
+\begin{document}
+\tiny
+\pagestyle{empty}
+
+
+\begin{tabular}{ll|ll}
+  \toprule
+\multicolumn{4}{c}{Table of Laplace Transforms}
+\\\midrule
+
+$f(t)$ & $\Laplace{f(t)}=F(s)$ 
+	& $1$       			 & $\frac{1}{s}$            \\
+$e^{at}f(t)$	& $F(s-a)$	 \
+	& $\mathcal{U}(t-a)$ & $\frac{e^{-as}}{s}$  \\
+$f(t-a)\mathcal{U}(t-a)$ & $e^{-as}F(s)$  
+	& $\delta(t)$	& 1 \\
+$\delta(t-t_0)$ & $e^{-st_0}$  
+	& $t^nf(t)$ 	& $(-1)^n\frac{d^nF(s)}{ds^n}$   \\
+$f^{(n)}(t)$ 	& $s^nF(s) - \sum_{i=0}^{n-1} s^if^{(n-i-1)}(0) $
+	& $\displaystyle{\int_0^t f(x)g(t-x)dx}$ & $F(s)G(s)$  \\
+$t^n$ ($n=0,1,2,\dots$)     & $\frac{n!}{s^{n+1}}$     
+	& $t^x$ ($x\geq-1\in\mathbb{R}$)     & $\frac{\Gamma(x+1)}{s^{x+1}}$ \\
+$\sin kt$ 	& $\frac{k}{s^2+k^2}$  
+	& $\cos kt$ 	& $\frac{s}{s^2+k^2}$  \\
+$e^{at}$ 	& $\frac{1}{s-a}$ 	 
+	& $\sinh kt$	& $\frac{k}{s^2-k^2}$  \\
+$\cosh kt$	& $\frac{s}{s^2-k^2}$  
+	& $\frac{e^{at}-e^{bt}}{a-b}$	& $\frac{1}{(s-a)(s-b)}$ \\ 
+$f(t)$ & $\Laplace{f(t)}=F(s)$ 
+	& $\frac{ae^{at}-be^{bt}}{a-b}$	& $\frac{s}{(s-a)(s-b)}$ \\ 
+$te^{at}$	& $\frac{1}{(s-a)^2}$	 
+	& $t^ne^{at}$	& $\frac{n!}{(s-a)^{n+1}}$	 \\
+$e^{at}\sin kt$	& $\frac{k}{(s-a)^2+k^2}$   
+	& $e^{at}\cos kt$	& $\frac{s-a}{(s-a)^2+k^2}$   \\
+$e^{at}\sinh kt$	& $\frac{k}{(s-a)^2-k^2}$   
+	& $e^{at}\cosh kt$	& $\frac{s-a}{(s-a)^2-k^2}$   \\
+$t\sin kt$  	& $\frac{2ks}{(s^2+k^2)^2}$  
+	& $t\cos kt$  	& $\frac{s^2-k^2}{(s^2+k^2)^2}$  \\
+$t\sinh kt$  	& $\frac{2ks}{(s^2-k^2)^2}$  
+	& $t\cosh kt$  	& $\frac{s^2-k^2}{(s^2-k^2)^2}$  \\
+$\frac{\sin at}{t}$	& $\arctan \frac{a}{s}$  
+	& $\frac{1}{\sqrt{\pi t}}e^{-a^2/4t}$	& $\frac{e^{-a\sqrt{s}}}{\sqrt{s}}$ \\
+$\frac{a}{2\sqrt{\pi t^3}}e^{-a^2/4t}$	& $e^{-a\sqrt{s}}$ 
+	& $\text{erfc}\left(\frac{a}{2\sqrt{t}}\right)$ &  $\frac{e^{-a\sqrt{s}}}{s}$ \\
+
+\bottomrule
+\end{tabular}
+
+\renewcommand{\arraystretch}{1}
+
+\end{document}

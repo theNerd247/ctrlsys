@@ -11,13 +11,16 @@ pdf/
 tex/
   Latex projects for writing homework.
 
-tex/<project_name>
-  Latex files for a specific project.
+<project_name>
+  All files related to a given project
 
-tex/<project_name>/tex/
+<project_name>/src/
+  The source code for the project (if any)
+
+<project_name>/tex/
   Latex files for the specific project.
 
-tex/<project_name>/img/
+<project_name>/img/
   The images, TikZ files, etc. for the given project
 
 tex/<project_name>/sty/
