@@ -1,0 +1,47 @@
+\ProvidesPackage{labreport}
+%my custom style for lab reports
+
+% one inch margins
+\usepackage{geometry}
+% use subfiles 
+\usepackage{subfiles}
+% allow src code implementation
+\usepackage{listings}
+% needed for images
+\usepackage{graphicx}
+% all images should be placed in figures/
+%\graphicspath{{../img/}}
+% enable more control of floats
+\usepackage{float}
+% use good tables
+% allow picture drawing
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{booktabs}
+% appendix support
+\usepackage[titletoc,title]{appendix}
+%allow IEEE algorithms
+\usepackage{algorithm}
+\usepackage{algorithmic}
+% use math symbols
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+% allow urls
+\usepackage[hidelinks]{hyperref}
+% custom reference styles
+\usepackage{refstyle}
+\newref{fig}{refcmd={Figure~\ref{#1}}}
+\newref{tab}{refcmd={Table~\ref{#1}}}
+\newref{gph}{refcmd={Graph~\ref{#1}}}
+\newref{eq}{refcmd={Equation~\ref{#1}}}
+\newref{al}{refcmd={Algorithm~\ref{#1}}}
+\newref{ap}{refcmd={Appendix~\ref{#1}}}
+
+\lstset{breakatwhitespace=false,
+	breaklines=true,
+	captionpos=top,
+	numbers=left,
+	frame=tl,
+	basicstyle=\ttfamily
+	}

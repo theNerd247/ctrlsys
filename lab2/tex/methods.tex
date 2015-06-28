@@ -1,0 +1,28 @@
+\documentclass[main.tex]{subfile}
+
+\begin{document}
+\section{Methods} 
+\label{sec:methods}
+% section methods (end)
+
+\section{Results} 
+\label{sec:results}
+
+\begin{table}[H]
+	\begin{tabularx}{\textwidth}{llllllllll}
+		\toprule
+		\\ $K_p$ & $K_i$ & $K_d$ & $T_r$ & $T_p$ & $T_s$ & $\%OS$ & $e_{ss}$ 
+		& Stable System? & Damping Classification
+
+		\\ \midrule
+		\input{lab2results.tex}
+		\\ \bottomrule
+	\end{tabularx}
+	\caption{PID Simulation Results}
+	\label{tab:pidSimResults}
+\end{table}
+% section results (end)
+
+\input{lab2ImgResults.tex}
+
+\end{document}

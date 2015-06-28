@@ -13,7 +13,10 @@ set(PDF_COMPILER_OPTS
 
 # list of projects to build
 set(projects 
+	"cheatsheet"
 	"lab1"
+	"hw3"
+	"lab2"
 	)
 
 set(OLDTEXINPUTS $ENV{TEXINPUTS})

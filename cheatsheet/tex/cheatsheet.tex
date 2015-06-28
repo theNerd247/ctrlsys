@@ -1,5 +1,6 @@
 \documentclass[main.tex]{subfiles}
 
+\everymath{\displaystyle}
 \begin{document}
   
 \tiny
@@ -8,7 +9,7 @@
   \toprule
   \\Partial Fraction Decomposition &
   $
-  \begin{array}{lr}\displaystyle
+  \begin{array}{lr}
     F(s) = \frac{N(s)}{D(s)}
     = \sum_{i=0}^n \sum_{k=1}^r \frac{K_{ik}}{(s+p_i)^k}
     \\\mathrm{K}_{ik} = \lim\limits_{s \to -p_i} \frac{1}{(r-k)!}
@@ -18,7 +19,7 @@
   \\\midrule
   \\Transfer Function &
   $ 
-  \begin{array}{ll}\displaystyle
+  \begin{array}{ll}
     L(c) = L(r)
     \\G(s) 
       = \frac{C(s)}{R(s)} 
@@ -44,15 +45,34 @@
   \end{tabular}
   \\\midrule
   \\Mechatronics Analysis &
-  $\displaystyle
+  $
 	  G(s) = \frac{\theta(s)}{v(s)} 
     \approx \left. \frac{K}{s+a} \right| 
       K = \frac{K_t}{Ri(s)}, a = \frac{D_m+\frac{K_tK_b}{R}}{i(s)}
   $
+	\\\midrule
+	\\Second Order Linear System &
+	\begin{tabular}{lc}
+		General Form & $\frac{\omega_n^2}{s^2+2\omega_n\xi s+\omega_n^2}$
+		\\ $\xi$      & $\left. \frac{\alpha}{2\omega_n} \right| \alpha =2\omega_n\xi$
+		\\ $\omega_n$ & $\left. \sqrt{\beta} \right| \beta = \omega_n^2$
+		\\ $T_p$      & $\frac{\pi}{\omega_n \sqrt{1-\xi^2}}$
+		\\ $T_s$      & $\\frac{4}{\omega_n\xi}$
+		\\\%OS       & $100\e^{-\xi\omega_n T_p}$
+	\end{tabular}
+	\\\midrule
+	\\Damping Characteristics &
+	\begin{tabular}{lc}
+		overdamped & $\xi > 1$
+		\\critically damped & $\xi =1$
+		\\under damped & $0 < \xi < 1$
+		\\zero damping & $\xi = 0$
+		\\unstable & $\xi < 0$
+	\end{tabular}
   \\\midrule
   \\Notation &
   $
-		\begin{array}{ll}\displaystyle
+		\begin{array}{ll}
 			  L(y) = (P_{dy})y = \left(a_n(t)D^n + a_{n-1}(t)D^{n-1} + \cdots + a_1(t)D + a_0(t) \right)y
 			\\ D^{n}y = \frac{\del{^ny}}{\del{t^n}}
 		\end{array}

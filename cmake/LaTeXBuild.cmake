@@ -8,8 +8,6 @@ function(SetupLaTexBuildEnv
 	subProjects # list of sub projects that this project depends on
 	)
 
-	message("Setting up ${PROJECT_NAME}")
-
 	# build the main file path
 	set("${PROJECT_NAME}_mainTexFilePath"
 		"${CMAKE_CURRENT_SOURCE_DIR}/${mainTexFile}" 

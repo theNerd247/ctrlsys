@@ -3,14 +3,19 @@ cmake_policy(SET CMP0011 NEW) #acknowledge policy push/pop
 
 include(LaTeXBuild)
 
-project("cheatsheet")
+project("lab2")
 
 set(mainTexFile "main.tex")
 
+set(srcDir "src")
+set(graphDir "graph")
 set(texDir "tex")
 set(styDir "sty")
 set(imgDir "img")
-set(otherIncludes "")
+set(otherIncludes 
+	"${srcDir}"
+	"${graphDir}"
+	)
 
 set(subProjects "")
 
