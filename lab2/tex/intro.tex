@@ -4,5 +4,57 @@
 \section{Introduction} 
 \label{sec:introduction}
 
+The PID controller is a popular control system that is cheap and simple to
+create and maintain in inductry. PID controllers allow the engineer to develop
+control systems that are not only stable and reach the given input signal, but
+can also control how fast the system responds and base its output on the
+system's current output (in otherwords a PID controller is a feedback controller.)
+
+The idea behind a PID controller is to optimize the performance of a control
+signal using three properties of the error signal $e(t)$ (the difference between the
+set point of the controller and the current controller output - $r(t)-c(t)$): 
+
+\begin{itemize}
+	\item proportional: $K_p e(t)$
+	\item integral: $K_i \int_0^t e(t) \del{t}$
+	\item derivative $K_d D[e(t)]$
+\end{itemize}
+
+A PID control system uses an intermediate controller between the error
+computation and the system plant (or controller). This intermediate layer takes
+as its input the error of the system and generates a control signal for the
+system plant:
+
+\begin{align}
+	\label{eq:gc_t}
+	G_c(t) = K_p e(t) + K_i \int_0^t e(t) \del{t} + K_d D[e(t)]
+\end{align}
+
+In s-space \eqref{gc_t} is: 
+
+\begin{align}
+	\label{eq:gc_s}
+	G_c(s) &= \frac{U(s)}{E(s)}
+	\\     &= K_p + \frac{K_i}{s} + K_ds
+\end{align}
+
+Thus, given a system plant, $G(s)$ and a unity feedback we have the entire
+system controller $T(s)$: 
+
+\begin{align}
+	T(s) &= \frac{C(s)}{R(s)}
+	\\   &= \frac{G_cG}{1+G_cG}
+\end{align}
+
+
+Because \eqref{gc_s} can be viewed as the superposition of three different
+controllers (the proportional, integral, and derivative) for the control signal
+the affects of each constant ($K_p$,$K_i$,$K_d$) can be analyzed or synthesized
+separately in order to obtain the optimum performance for a given system. And
+thus by first isolating a single PID constant in the system and generating $N$
+number of control systems (each with a variation of that isolated PID constant)
+we can observe the affects of that variable on the system.
+
 % section introduction (end)
+
 \end{document}

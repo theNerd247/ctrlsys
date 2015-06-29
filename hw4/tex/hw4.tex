@@ -1,0 +1,76 @@
+\documentclass[main.tex]{subfile}
+
+\begin{document}
+
+\begin{enumerate}
+	\item
+		\begin{minipage}[H]{\textwidth}
+			\input{prob1a1}
+			\input{prob1a2}
+			\input{prob1a3}
+		\end{minipage}
+
+	\item
+		\begin{align*}
+			T(s) &= \frac{1}{1+G(s)}
+			\\   &= \frac{28,900}{s^2+200s+28,900}
+		\end{align*}
+
+		\begin{center}
+			\begin{tabular}{ll}
+				$\omega_n$ & $170$
+				\\$\xi$ & $0.58824$
+				\\$T_p$ & $0.02285$
+				\\$T_s$ & $0.04000$
+				\\$\%OS$ & $10.176$
+			\end{tabular}
+		\end{center}
+
+	\item
+		\begin{align*}
+			T(s) &= \frac{1}{1+\frac{1}{s}G(s)}
+			\\   &= \frac{507s}{s^5+3s^4+10s^3+30s^2+169s+507}
+		\end{align*}
+
+		\begin{center}
+			\begin{tabular}{l|ccc}
+				$s^5$ & 1 & 10 & 169
+				\\$s^4$ & 3 & 30 & 507
+				\\$s^3$ & 12 & 60 & 0
+				\\$s^2$ & 22.5 & 0 & 0
+				\\$s^1$ & 60 & 0 & 0
+				\\$s^0$ & 60 & 0 & 0
+				\\\hline
+			\end{tabular}
+			\\$s^3$ row has a zero in the left column so then:
+			\\$s^3 = D[3s^4+30s^2+507] \implies 12\ 60\ 0$
+		\end{center}
+
+		Because there are no sign changes in the left column this control system is
+		stable and all 5 poles are in the left half plane.
+
+	\item
+		\begin{align*}
+			T(s) &= \frac{1}{1+G(s)}
+			\\   &= \frac{K}{s^3+14s^2+45s+(50+K)}
+		\end{align*}
+
+		\begin{center}
+			\begin{tabular}{l|cc}
+				  $s^3$ & 1 & 45
+				\\$s^2$ & 14 & $50+K$
+				\\$s^1$ & $\dfrac{K-580}{-14}$ & 0
+				\\$s^0$ & $50+K$ & 0
+				\\\hline
+			\end{tabular}
+		\end{center}
+
+		\begin{align*}
+			\frac{580-K}{14} > 0
+			\\50+k > 0
+			\\\therefore \boxed{-50 < K < 580}
+		\end{align*}
+
+\end{enumerate}
+
+\end{document}

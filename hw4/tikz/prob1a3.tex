@@ -1,0 +1,19 @@
+\usetikzlibrary{shapes,arrows}
+
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{block} = [draw, rectangle]
+\tikzstyle{sum} = [draw, circle]
+
+\begin{tikzpicture}[auto,node distance=1.5cm]
+	% put the nodes (blocks, sums, etc..) where we want them
+	\node [input,name=input] (in) {};
+	\node [block,right of=sum1] (g1) {$\frac{50s^2-100s}{s^4+s^3+150s^2-100s}$};
+	\node [output,right of=g1,node distance=2.5cm] (out) {};
+
+	% draw the feedforwards
+	\draw [->] (in) -- node {$R(s)$} (g1);
+	\draw [->] (g1) -- node {$C(s)$} (out);
+
+\end{tikzpicture}
+

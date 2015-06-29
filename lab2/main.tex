@@ -3,27 +3,39 @@
 %include the packages and styles to use
 %\usepackage{package_name}
 \usepackage{labreport}
+\usepackage{mathsymbols}
+\usepackage{mathformulas}
 \usepackage{color}
 
 \begin{document}
 
-	\title{Lab 1}
-	\author{Noah Harvey}
-	% Date is automagically included (see Latex documentation)
-	\maketitle
+\title{Lab 2}
+\author{Noah Harvey}
+% Date is automagically included (see Latex documentation)
+\maketitle
 
-	\tableofcontents
-	\listoftables
-	\listoffigures
+\begin{abstract}
+	PID controllers are very popular in industry and are often used to generate
+	simple control systems that have fine-tuned optimization performance. To
+	generate a PID loop three constants must first be determined:
+	$K_p$,$K_i$,$K_d$ each cooresponding to the proportional, integral, and
+	derivative of the error signal in the system. This lab seeks to investigate
+	the affects of each of these three constants on a control system.
+\end{abstract}
 
-	\pagebreak
+\tableofcontents
+\listoftables
+\listoffigures
 
-	% other sections of the labreport go here
-	\subfile{methods}
+\pagebreak
 
-	%\pagebreak
-	%appendix of the document go here
-	%\subfile{file_basename}
-	%\pagebreak
+% other sections of the labreport go here
+\subfile{intro}
+\subfile{methods}
+
+%\pagebreak
+%appendix of the document go here
+%\subfile{file_basename}
+%\pagebreak
 
 \end{document}
