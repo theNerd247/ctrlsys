@@ -3,26 +3,41 @@
 \begin{document}
 \section{Methods} 
 \label{sec:methods}
+
+This experiment was designed to analyze the relationships of $K_p$, $K_i$,
+$K_d$, and the system's step-response characteristics (respectively). To perform
+this analysis we first design a unity-feedback control system with a PID layer
+that uses a plant function that is generic enough that will give clear response
+characteristics. In this experiment, $G(s) = \frac{20}{s^2+4s+3}$ (see
+\figref{ctrlSys} for the total control system model). Then we run the
+simulations using the following steps:
+
+\begin{figure}
+  \input{controlSys.tex}
+  \caption{Experimental Control System}
+  \label{fig:ctrlSys}
+\end{figure}
+
+\begin{enumerate}
+
+  \item \label{isolateStep}
+    Isolate a single PID constant; assigning the chosen constant with an initial
+    value.
+
+  \item \label{runStep} 
+    Run the experiment using a step input and measure the output characteristics.
+
+  \item Rerun from \ref{runStep}, varying the isolated parameter by a small
+    amount.
+
+  \item Rerun from \ref{isolateStep} choosing a different constant to isolate.
+    Note that for the $K_i$ and $K_d$ constants $K_p$ is not ``eliminated'' but
+    held constant at $1$. This is to make the step response stable (in most
+    cases) and approaching $1$.
+\end{enumerate}
+
+This experiment was performed using a Matlab$^\copyright$ script. See
+\apref{source_code} for the actual script.
+
 % section methods (end)
-
-\section{Results} 
-\label{sec:results}
-
-\begin{table}[H]
-	\begin{tabularx}{\textwidth}{llllllllll}
-		\toprule
-		\\ $K_p$ & $K_i$ & $K_d$ & $T_r$ & $T_p$ & $T_s$ & $\%OS$ & $e_{ss}$ 
-		& Stable System? & Damping Classification
-
-		\\ \midrule
-		\input{lab2results.tex}
-		\\ \bottomrule
-	\end{tabularx}
-	\caption{PID Simulation Results}
-	\label{tab:pidSimResults}
-\end{table}
-% section results (end)
-
-\input{lab2ImgResults.tex}
-
 \end{document}

@@ -42,76 +42,82 @@ pts = [pt1,pt2,pt3,pt4];
 latexResults = [];
 pn = 0;
 for part = pts
-		pn = pn +1;
-		for i = 1:7
-				% our pid loop
-				PID = pid(part.kp(i),part.ki(i),part.kd(i));
+    pn = pn +1;
+    for i = 1:7
+        % our pid loop
+        PID = pid(part.kp(i),part.ki(i),part.kd(i));
 
-				% the resulting system: T(s)
-				sys = feedback(PID*g,h);
+        % the resulting system: T(s)
+        sys = feedback(PID*g,h);
 
-				% run the step response
-				sr = step(sys,t);
-				si = stepinfo(sr,t);
+        % run the step response
+        sr = step(sys,t);
+        si = stepinfo(sr,t);
 
-				% print the step response
-				step(sys,t);
-				fn = sprintf('part%i-%i.jpg',pn,i)
-				print(fn,'-djpeg');
-				close;
+        % print the step response
+        step(sys,t);
+        fn = sprintf('part%i-%i',pn,i)
+        legend(sprintf('kp: %.2d, ki: %.2d, kd: %.2d',part.kp(i),part.ki(i),part.kd(i)));
+        print([fn,'.jpg'],'-djpeg');
+        close;
 
-				%calculate the steady state error and...
-				%determine stability of system
-				si.Stability = 'no';
-				si.SteadyStateError = 1;
-				if isstable(sys)
-						si.Stability = 'yes';
-						si.SteadyStateError = 1/(1+dcgain(sys));
-				end
+        %calculate the steady state error and...
+        %determine stability of system
+        si.Stability = 'no';
+        si.SteadyStateError = 1;
+        if isstable(sys)
+           si.Stability = 'yes';
+           si.SteadyStateError = 1/(1+dcgain(sys));
+        end
 
-				%determine the damping of the system
-				[wn,xi] = damp(sys);
-				if(xi(1) > 1)
-						si.Damping = 'overdamped';
-				elseif(xi(1) == 1)
-						si.Damping = 'critically damped';
-				elseif(xi(1) < 1 && xi(1) > 0)
-						si.Damping = 'under damped';
-				elseif(xi(1) == 0)
-						si.Damping = 'no damping';
-				else
-						si.Damping = 'unstable system';
-				end
+        %determine the damping of the system
+        [wn,xi] = damp(sys);
+        if(xi(1) > 1)
+                si.Damping = 'overdamped';
+        elseif(xi(1) == 1)
+                si.Damping = 'critically damped';
+        elseif(xi(1) < 1 && xi(1) > 0)
+                si.Damping = 'under damped';
+        elseif(xi(1) == 0)
+                si.Damping = 'no damping';
+        else
+                si.Damping = 'unstable system';
+        end
 
-				part.results(i) = si;
-		end
-		latexResults = [latexResults,toLatex(part),'\n'];
+        part.results(i) = si;
+    end
+    
+    fn = sprintf('part%i',pn);
+    sfprintf([fn,'.tex'],toPrintTable(part,'\\\midrule\\','&'));
+    sfprintf([fn,'.csv'],toPrintTable(part,'',','));
 end
 
-% save the latex tables
-resultsFile = fopen('lab2results.tex','w+');
-fprintf(resultsFile, '%s',latexResults);
-fclose(resultsFile);
-
 end
 
-% converts the lab part results to a latex tabularx line 
-function out = toLatex(part)
+% prints text to a file
+function sfprintf(fileName,str)
+    fl = fopen(fileName,'w+');
+    fprintf(fl, '%s',str);
+    fclose(fl);
+end
+
+% converts the lab part results to a text table where each row is a single
+% experiment
+function out = toPrintTable(part,preline,delim)
 out = [];
 for i = 1:7
 		out = [out ...
-		,'\\\midrule','\n' ...
-		,'\\ ' ...
-		,num2str(part.kp(i)),'&' ...
-		,num2str(part.ki(i)),'&' ...
-		,num2str(part.kd(i)),'&' ...
-		,num2str(part.results(i).RiseTime),'&' ...
-		,num2str(part.results(i).PeakTime),'&' ...
-		,num2str(part.results(i).SettlingTime),'&' ...
-		,num2str(part.results(i).Overshoot),'&' ...
-		,num2str(part.results(i).SteadyStateError),'&' ...
-		,part.results(i).Stability,'&' ...
-		,part.results(i).Damping,'\n' ...
+        ,'\n',preline...
+		,num2str(part.kp(i)),delim ...
+		,num2str(part.ki(i)),delim ...
+		,num2str(part.kd(i)),delim ...
+		,num2str(part.results(i).RiseTime),delim ...
+		,num2str(part.results(i).PeakTime),delim ...
+		,num2str(part.results(i).SettlingTime),delim ...
+		,num2str(part.results(i).Overshoot),delim ...
+		,num2str(part.results(i).SteadyStateError),delim ...
+		,part.results(i).Stability,delim ...
+		,part.results(i).Damping ...
 		];
 	end
 end

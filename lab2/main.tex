@@ -2,10 +2,15 @@
 
 %include the packages and styles to use
 %\usepackage{package_name}
+\usepackage[top=0.5in,bottom=0.5in]{geometry}
 \usepackage{labreport}
 \usepackage{mathsymbols}
 \usepackage{mathformulas}
 \usepackage{color}
+
+% we are using a lot of images. and we'll need more space to process all the
+% floats
+\usepackage{morefloats}
 
 \begin{document}
 
@@ -32,10 +37,11 @@
 % other sections of the labreport go here
 \subfile{intro}
 \subfile{methods}
+\subfile{results}
 
-%\pagebreak
+\pagebreak
 %appendix of the document go here
-%\subfile{file_basename}
+\subfile{appendixA}
 %\pagebreak
 
 \end{document}

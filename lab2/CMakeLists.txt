@@ -8,13 +8,15 @@ project("lab2")
 set(mainTexFile "main.tex")
 
 set(srcDir "src")
-set(graphDir "graph")
+set(graphDir "${srcDir}/results/lab2results")
+set(figDir "figures")
 set(texDir "tex")
 set(styDir "sty")
 set(imgDir "img")
 set(otherIncludes 
 	"${srcDir}"
 	"${graphDir}"
+  "${figDir}"
 	)
 
 set(subProjects "")
