@@ -16,6 +16,7 @@ createImageTable()
 	\\\\ \\bottomrule
 	\\end{tabular}
 	\\caption{Part $part Step Responses}
+  \\label{tab:part${part}Response}
 	\\end{table}
 	IMGTABLE
 }
