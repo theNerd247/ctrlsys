@@ -28,5 +28,6 @@ set(texinputs
 SetupLaTexBuildEnv (
 	"${mainTexFile}" # the main tex file
 	"${texinputs}" # all the standalone TEXINPUTS for this project
+	"${styleFiles}"
 	"${subProjects}"
 	)

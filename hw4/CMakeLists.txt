@@ -13,7 +13,7 @@ set(styDir "sty")
 set(imgDir "img")
 set(otherIncludes "")
 
-set(subProjects "proj2")
+set(subProjects "")
 
 set(texinputs 
 	"${tikzDir}"
@@ -25,5 +25,6 @@ set(texinputs
 SetupLaTexBuildEnv (
 	"${mainTexFile}" # the main tex file
 	"${texinputs}" # all the standalone TEXINPUTS for this project
+	"${subfiles}"
 	"${subProjects}"
 	)

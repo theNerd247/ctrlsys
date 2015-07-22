@@ -14,6 +14,8 @@ set(otherIncludes "src")
 
 set(subProjects "")
 
+set(styleFiles "")
+
 set(texinputs 
 	"${texDir}"
 	"${styDir}"
@@ -23,5 +25,6 @@ set(texinputs
 SetupLaTexBuildEnv (
 	"${mainTexFile}" # the main tex file
 	"${texinputs}" # all the standalone TEXINPUTS for this project
+	"${styleFiles}"
 	"${subProjects}"
 	)

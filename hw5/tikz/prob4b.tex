@@ -1,0 +1,19 @@
+\begin{tikzpicture}[scale=1]
+	%poles
+	\node [draw=none,at={(-1,1)}] (p1) {X};
+	\node [draw=none,at={(-1,-1)}] (p2) {X};
+
+	%zeros
+	\node [draw=none,at={(-1,0)}] (z1) {O};
+
+	% lines
+	\draw [->] (p1) -- (-1,1.5);
+	\draw [->] (p2) -- (-1,-1.5);
+
+	\draw [->] (-1.5,0) -- (z1);
+	\draw [->] (0.5,0) -- (z1);
+
+	%axis
+	\draw [<->] (-2,0) -- (2,0);
+	\draw [<->] (0,2) --(0,-2);
+\end{tikzpicture}

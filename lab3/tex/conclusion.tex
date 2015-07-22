@@ -1,0 +1,33 @@
+\documentclass[main.tex]{subfile}
+
+\begin{document}
+
+\section{Conclusion} 
+\label{sec:conclusion}
+
+The following table can be seen as the relationship between the PID constants
+and their response characteristics:
+
+\begin{table}[H]
+	\begin{tabularx}{\textwidth}{lXXXXXX}
+		\toprule
+		\\ & $T_r$ & $T_p$ & $T_s$ & $\%OS$ & $e_{ss}$ & $Stability$ 
+		\\ \midrule
+		\\ $K_p$ & inversely & inversely & small affect & increases  & inversely  & destabilizes
+		\\ $K_i$ & inversely & decreases & increases & increases & eliminates & destabilizes.
+		\\ $K_d$ & inversely & decreases & inversely & inversely & no effect & no effect
+		\\ \bottomrule
+	\end{tabularx}
+	\caption{Correlations Between PID Constants and Step Response Characteristics}
+	\label{tab:visualResults}
+\end{table}
+
+Note, however, that these results were derived from visual inspection which does
+not imply sufficient accuracy. Also, because the system model is unknown error
+calculations cannot be performed. Also, as seen from part two of
+\secref{results} their are small variances errors that are introduced into the
+system 
+
+% section conclusion (end)
+
+\end{document}

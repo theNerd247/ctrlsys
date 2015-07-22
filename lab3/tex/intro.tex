@@ -1,0 +1,25 @@
+\documentclass[main.tex]{subfile}
+
+\begin{document}
+
+\section{Introduction} 
+\label{sec:intro}
+
+The DC motor system used in this lab has the following block diagram: 
+
+\input{labBlockDiagram.tex}
+
+Where $\theta_d$ is the desired position angle of the motor shaft and $\theta$
+is the actual angle. The PID controller for this lab is reified by a computer
+and the control data - namely the sensor feedback and the desired angle - are
+interfaced with the system via a USB data aquisition board (noted as UDAB).
+MATLAB Simulink software is used to perform measurements of the system as well
+as simulate and tune the PID controller. 
+
+As in Lab 2, the three PID constants - $K_i$,$K_p$,$K_d$ - are each isolated and
+then varied to asses how each constant affects the system. In this lab, however,
+the exact plant model is uknown.
+
+% section intro (end)
+
+\end{document}

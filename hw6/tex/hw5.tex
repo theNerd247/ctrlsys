@@ -1,0 +1,49 @@
+\documentclass[main.tex]{subfile}
+
+\everymath{\displaystyle}
+\begin{document}
+
+\begin{enumerate}
+	\item 
+		\begin{align*}
+			K_d &= \lim_{s \to 0} s^2G(s) 
+			\\  &= \frac{48K_d}{35} = 10,000
+		\end{align*}
+		\begin{displaymath}
+			\therefore \boxed{K_d = 7291.7}
+		\end{displaymath}
+
+	\item
+		\begin{align*}
+			G'(s) &= \frac{G}{GH-G+1}
+			\\    &= \frac{K(s+1)(s+3)}{K(s+1)(s+4)-K(s+1)(s+3)+s^2(s+2)(s+3)}
+		\end{align*}
+		\begin{align*}
+			e_{ss} &= \lim_{s \to 0} \frac{1}{1+ G'(s)}
+			\\     &= \frac{1}{4}
+		\end{align*}
+
+	\item
+		\input{prob3.tex}
+
+	\item
+		\begin{enumerate}
+			\item 
+				\begin{tabular}{l|cc}
+					\\\hline
+					\\$s^2$ & $(1-K)$ & $(2-K)$
+					\\$s^1$ & $2(1-K)$ & $0$
+					\\$s^0$ & $(2-K)$  & $0$
+				\end{tabular}
+				\begin{align*}
+					\boxed{K<1, K >2}
+				\end{align*}
+			\item
+				\input{prob4b.tex}
+			\item 
+				$s(K=1) = \infty$
+				\\$s(K=2) = [0,-2]$
+		\end{enumerate}
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,36 @@
+\documentclass[a4paper,titlepage]{article}
+
+%include the packages and styles to use
+%\usepackage{package_name}
+\usepackage{subfiles}
+\usepackage{lab3}
+
+\begin{document}
+
+\title{Lab 3}
+\author{Noah Harvey}
+\author{Bogie Rabino}
+%\author{Jill Freeland}
+
+% Date is automagically included (see Latex documentation)
+\maketitle
+
+\begin{abstract}
+	PID controllers are often used as a means of creating control systems for
+	which the exact model is uknown. In this lab we demonstrate the affects of a
+	PID control loop on a DC motor system using Simulink$^\copyright$.
+\end{abstract}
+
+\tableofcontents
+\listoftables
+\listoffigures
+
+\pagebreak
+
+% other sections of the labreport go here
+\subfile{intro}
+\subfile{methods}
+\subfile{results}
+\subfile{conclusion}
+
+\end{document}

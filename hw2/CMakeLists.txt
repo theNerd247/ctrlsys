@@ -21,8 +21,8 @@ set(texinputs
 	"${otherIncludes}")
 
 SetupLaTexBuildEnv (
-	"${projectName}" # the name of the project (this also sets the name of the pdf file)
 	"${mainTexFile}" # the main tex file
 	"${texinputs}" # all the standalone TEXINPUTS for this project
+	"${styleFiles}" 
 	"${subProjects}"
 	)
